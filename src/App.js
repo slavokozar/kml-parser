@@ -34,6 +34,14 @@ function App() {
             const geoJson = kml(xml);
             setStatus('Success');
             console.log(geoJson);
+
+            const coords = geoJson.features.map((feature) => ({
+                lat: feature.geometry.coordinates[0],
+                lng: feature.geometry.coordinates[1],
+                elv: feature.geometry.coordinates[2],
+            }));
+
+            console.log(coords);
         };
 
         reader.readAsText(file);
